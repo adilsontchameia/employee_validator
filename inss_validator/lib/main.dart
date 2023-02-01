@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inss_validator/screen/splash_screen.dart';
+import 'package:inss_validator/screen/validator_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: SplashScreen(),
+      home: QueryInformationScreen(),
     );
   }
 }
