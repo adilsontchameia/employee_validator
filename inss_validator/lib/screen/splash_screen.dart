@@ -17,11 +17,9 @@ class SplashScreen extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      'version 1.0',
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
+                    child: Text('version 1.0',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
                   )),
             ),
             Center(child: Image.asset('assets/HaloLogoWhite.png')),
