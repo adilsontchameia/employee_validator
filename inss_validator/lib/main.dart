@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:inss_validator/screen/validator_screen.dart';
+import 'package:inss_validator/providers/validate_inss_provider.dart';
+import 'package:inss_validator/screen/validation_screen/validation_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HaloInssValidator());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HaloInssValidator extends StatelessWidget {
+  const HaloInssValidator({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: QueryInformationScreen(),
+      home: Provider(
+          create: (context) => ValidateInssProvider(),
+          child: const QueryInformationScreen()),
     );
   }
 }
