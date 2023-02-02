@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:inss_validator/data/employee_data.dart';
 import 'package:inss_validator/models/employee_model.dart';
-import 'package:inss_validator/providers/validate_inss_provider.dart';
 import 'package:inss_validator/screen/validation_screen/widgets/body_title_subtitle.dart';
 import 'package:inss_validator/screen/validation_screen/widgets/header_widget.dart';
 import 'package:inss_validator/screen/validation_screen/widgets/otp_widget.dart';
+import 'package:inss_validator/screen/validation_screen/widgets/search_button.dart';
 import 'package:inss_validator/screen/validation_screen/widgets/table_query_result.dart';
 import 'package:inss_validator/utils/screen_proportion.dart';
-import 'package:provider/provider.dart';
 
 class QueryInformationScreen extends StatefulWidget {
   const QueryInformationScreen({
@@ -34,7 +33,6 @@ class _QueryInformationScreenState extends State<QueryInformationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final queryResult = context.watch<ValidateInssProvider>();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -60,23 +58,8 @@ class _QueryInformationScreenState extends State<QueryInformationScreen> {
                 padding: EdgeInsets.symmetric(
                     horizontal: proportion.screenSize(context).width * 0.030,
                     vertical: proportion.screenSize(context).height * 0.07),
-                child: SizedBox(
-                    height: proportion.screenSize(context).height * 0.045,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromRGBO(14, 61, 97, 1)),
-                        onPressed: () {
-                          queryResult.validateInss(
-                              int.parse(pin1.text),
-                              int.parse(pin2.text),
-                              int.parse(pin3.text),
-                              int.parse(pin4.text));
-                        },
-                        child: const Text('Search',
-                            style: TextStyle(
-                                fontSize: 35, fontWeight: FontWeight.bold)))),
+                child: SearchButton(
+                    pin1: pin1, pin2: pin2, pin3: pin3, pin4: pin4),
               ),
             ],
           ),
