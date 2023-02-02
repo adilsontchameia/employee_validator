@@ -1,3 +1,5 @@
+import 'package:gsheets/gsheets.dart';
+
 class GoogleSheetApi {
   static const _credentials = r'''
 {
@@ -12,7 +14,20 @@ class GoogleSheetApi {
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/haloinssvalidator%40vernal-verve-374913.iam.gserviceaccount.com"
 }
-
 ''';
   static const _spreadsheetid = '1JmRJIaYtWgB--qSA9oeaMPahGcPKs8YoFOV6vDE1QFA';
+  static final _gsheet = GSheets(_credentials);
+  static Worksheet? _userSheet;
+  static Future init() async {
+    final spreadsheet = await _gsheet.spreadsheet(_spreadsheetid);
+    _userSheet =
+        await _getWorkSheet(spreadsheet, title: 'Halo Master Insurance List');
+  }
+
+  static Future<Worksheet> _getWorkSheet(
+    Spreadsheet spreadsheet, {
+    required String title,
+  }) async {
+    return await spreadsheet.addWorksheet(title);
+  }
 }
