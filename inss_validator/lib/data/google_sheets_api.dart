@@ -28,6 +28,12 @@ class GoogleSheetApi {
     Spreadsheet spreadsheet, {
     required String title,
   }) async {
-    return await spreadsheet.addWorksheet(title);
+    try {
+      //Will create the spreadsheet if it does not exists.
+      return await spreadsheet.addWorksheet(title);
+    } catch (e) {
+      //If it's created will shall work normally.
+      return spreadsheet.worksheetByTitle(title)!;
+    }
   }
 }
