@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:gsheets/gsheets.dart';
+import 'package:inss_validator/data/staff_details.dart';
 
 class GoogleSheetApi {
   static const _credentials = r'''
@@ -18,10 +20,15 @@ class GoogleSheetApi {
   static const _spreadsheetid = '1JmRJIaYtWgB--qSA9oeaMPahGcPKs8YoFOV6vDE1QFA';
   static final _gsheet = GSheets(_credentials);
   static Worksheet? _userSheet;
+
   static Future init() async {
-    final spreadsheet = await _gsheet.spreadsheet(_spreadsheetid);
-    _userSheet =
-        await _getWorkSheet(spreadsheet, title: 'Halo Master Insurance List');
+    try {
+      final spreadsheet = await _gsheet.spreadsheet(_spreadsheetid);
+      _userSheet =
+          await _getWorkSheet(spreadsheet, title: 'Halo Master Insurance List');
+    } catch (e) {
+      debugPrint('Init Error: $e');
+    }
   }
 
   static Future<Worksheet> _getWorkSheet(
@@ -35,5 +42,22 @@ class GoogleSheetApi {
       //If it's created will shall work normally.
       return spreadsheet.worksheetByTitle(title)!;
     }
+  }
+
+  //Method to the information byId
+  static Future<StafDetails?> getById(int id) async {
+    if (_userSheet == null) return null;
+    final json = await _userSheet!.values.map.rowByKey(id, fromColumn: 1);
+    //Convert the json data to employee data
+    return json == null ? null : StafDetails.fromJson(json);
+  }
+
+  //Retrieve Staff List - All Master Insurance
+  static Future<List<StafDetails>> getAll() async {
+    if (_userSheet == null) return <StafDetails>[];
+    final staff = await _userSheet!.values.map.allRows();
+    return staff == null
+        ? <StafDetails>[]
+        : staff.map(StafDetails.fromJson).toList();
   }
 }
