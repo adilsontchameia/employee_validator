@@ -41,7 +41,6 @@ class _StaffValidationScreenScreenState
                     horizontal: proportion.screenSize(context).width * 0.010),
                 child: const BodyTitleAndSubtitle(),
               ),
-              SizedBox(height: proportion.screenSize(context).height * 0.01),
               OTPTextField(
                   controller: otpController,
                   length: 4,
@@ -49,14 +48,13 @@ class _StaffValidationScreenScreenState
                   fieldWidth: 70,
                   fieldStyle: FieldStyle.box,
                   style: const TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       color: Color.fromRGBO(14, 61, 97, 1),
                       fontWeight: FontWeight.bold),
                   textFieldAlignment: MainAxisAlignment.spaceAround,
                   onChanged: (pin) {
                     inss = int.parse(pin);
                   }),
-              SizedBox(height: proportion.screenSize(context).height * 0.01),
               Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: proportion.screenSize(context).height * 0.030,
