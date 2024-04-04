@@ -4,13 +4,12 @@
 
 import 'dart:convert';
 
-StafDetails stafDetailsFromJson(String str) =>
-    StafDetails.fromJson(json.decode(str));
+Staff staffFromJson(String str) => Staff.fromJson(json.decode(str));
 
-String stafDetailsToJson(StafDetails data) => json.encode(data.toJson());
+String stafDetailsToJson(Staff data) => json.encode(data.toJson());
 
-class StafDetails {
-  StafDetails(
+class Staff {
+  Staff(
       {required this.id,
       required this.name,
       required this.position,
@@ -51,7 +50,7 @@ class StafDetails {
   String donor;
   int baseSalary;
 
-  factory StafDetails.fromJson(Map<String, dynamic> json) => StafDetails(
+  factory Staff.fromJson(Map<String, dynamic> json) => Staff(
         id: jsonDecode(json["id"]),
         name: json["name"],
         position: json["position"],

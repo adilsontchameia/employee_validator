@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:inss_validator/providers/validate_inss_provider.dart';
-import 'package:inss_validator/screen/validation_screen/validation_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+import 'features/staff_validation/presentation/providers/providers.dart';
+import 'features/staff_validation/presentation/screens/screens.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //await Environment.initEnvironment();
   Provider.debugCheckInvalidValueType = null;
   runApp(const HaloInssValidator());
 }
@@ -17,5 +19,7 @@ class HaloInssValidator extends StatelessWidget {
       lazy: true,
       create: (context) => ValidateInssProvider(),
       child: const MaterialApp(
-          debugShowCheckedModeBanner: false, home: QueryInformationScreen()));
+        debugShowCheckedModeBanner: false,
+        home: StaffValidationScreen(),
+      ));
 }

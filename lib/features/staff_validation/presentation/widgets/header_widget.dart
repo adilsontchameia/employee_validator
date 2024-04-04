@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inss_validator/utils/menu_item_enum.dart';
-import 'package:inss_validator/utils/screen_proportion.dart';
+import 'package:inss_validator/config/helpers/screen_proportion.dart';
 
 class HeaderWidget extends StatelessWidget {
   HeaderWidget({
@@ -26,9 +25,9 @@ class HeaderWidget extends StatelessWidget {
       Positioned(
         bottom: proportion.screenSize(context).height * 0.030,
         left: proportion.screenSize(context).width * 0.060,
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text('INSS VALIDATOR',
                 style: TextStyle(
                     fontSize: 38,
@@ -88,32 +87,33 @@ class HeaderWidget extends StatelessWidget {
                       },
                       icon: const Icon(Icons.settings,
                           color: Colors.white, size: 35)),
-                  PopupMenuButton<MenuValues>(
-                    onSelected: (value) {
-                      switch (value) {
-                        case MenuValues.Language:
-                          //TODO
-                          print('Select Language');
-                          break;
-                        case MenuValues.About:
-                          //TODO
-                          print('About the APP');
-                          break;
 
-                        default:
-                      }
-                    },
-                    itemBuilder: (BuildContext context) => [
-                      const PopupMenuItem(
-                        value: MenuValues.Language,
-                        child: Text('Language'),
-                      ),
-                      const PopupMenuItem(
-                        value: MenuValues.About,
-                        child: Text('About'),
-                      ),
-                    ],
-                  )
+                  // PopupMenuButton<MenuValues>(
+                  //   onSelected: (value) {
+                  //     switch (value) {
+                  //       case MenuValues.Language:
+                  //         //TODO
+                  //         print('Select Language');
+                  //         break;
+                  //       case MenuValues.About:
+                  //         //TODO
+                  //         print('About the APP');
+                  //         break;
+
+                  //       default:
+                  //     }
+                  //   },
+                  //   itemBuilder: (BuildContext context) => [
+                  //     const PopupMenuItem(
+                  //       value: MenuValues.Language,
+                  //       child: Text('Language'),
+                  //     ),
+                  //     const PopupMenuItem(
+                  //       value: MenuValues.About,
+                  //       child: Text('About'),
+                  //     ),
+                  //   ],
+                  // )
                 ],
               ),
             ],

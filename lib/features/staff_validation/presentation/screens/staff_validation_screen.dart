@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:inss_validator/providers/validate_inss_provider.dart';
-import 'package:inss_validator/screen/staff_validation_screen/widgets/body_title_subtitle.dart';
-import 'package:inss_validator/screen/staff_validation_screen/widgets/header_widget.dart';
-import 'package:inss_validator/screen/staff_validation_screen/widgets/table_query_result.dart';
-import 'package:inss_validator/utils/screen_proportion.dart';
+import 'package:inss_validator/config/helpers/screen_proportion.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:provider/provider.dart';
 
-class StaffValidationScreenScreen extends StatefulWidget {
-  const StaffValidationScreenScreen({
+import '../providers/staff_validation_provider.dart';
+import '../widgets/widgets.dart';
+
+class StaffValidationScreen extends StatefulWidget {
+  const StaffValidationScreen({
     super.key,
   });
 
   @override
-  State<StaffValidationScreenScreen> createState() =>
-      _StaffValidationScreenScreenState();
+  State<StaffValidationScreen> createState() => _StaffValidationScreenState();
 }
 
-class _StaffValidationScreenScreenState
-    extends State<StaffValidationScreenScreen> {
+class _StaffValidationScreenState extends State<StaffValidationScreen> {
   final ScreenProportion proportion = ScreenProportion();
 
   OtpFieldController otpController = OtpFieldController();
@@ -59,7 +56,7 @@ class _StaffValidationScreenScreenState
                   padding: EdgeInsets.symmetric(
                       vertical: proportion.screenSize(context).height * 0.030,
                       horizontal: proportion.screenSize(context).width * 0.010),
-                  child: QueryResultAndTable()),
+                  child: const QueryResultTable()),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: proportion.screenSize(context).width * 0.030,

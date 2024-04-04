@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:inss_validator/api/google_sheets_api.dart';
-import 'package:inss_validator/data/staff_details.dart';
+
+import '../../domain/domain.dart';
+import '../../google_sheets_api.dart';
 
 class ValidateInssProvider extends ChangeNotifier {
   bool _isLoading = false;
-  StafDetails? staffDetails;
+  Staff? staffDetails;
   int? id;
   String? name;
   String? position;
