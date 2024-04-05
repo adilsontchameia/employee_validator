@@ -33,6 +33,9 @@ class StaffProvider extends ChangeNotifier {
     } on NotFound {
       isLoading = false;
       _erroMessage = 'Not found';
+    } catch (e) {
+      isLoading = false;
+      throw Exception();
     }
   }
 }
