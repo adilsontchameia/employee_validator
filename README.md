@@ -1,6 +1,8 @@
 # Employee Validator
 
-This is a flutter app which allows to query information by an employee ID from a Excel Sheet stored in Google Sheets.
+This is a flutter app which allows to query information by an employee ID from an Excel Sheet stored in Google Sheets.
+
+- [Youtube Video for OVERVIEW](https://youtu.be/R9MznnBBCeI)
 
 ## Set up the project
 
