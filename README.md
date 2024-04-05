@@ -1,6 +1,6 @@
 # Employee Validator
 
-This is a flutter app which allows to query information from a Excel Sheet stored in Google Sheets.
+This is a flutter app which allows to query information by an employee ID from a Excel Sheet stored in Google Sheets.
 
 ## Set up the project
 
@@ -13,8 +13,11 @@ A few resources to get you started if this is your first Flutter project:
 
 NOTE: Do not forget to duplicate the .env.template and rename one of the copy as .env and then paste your sheet ID.
 
+<img width="900" alt="p1" src="https://github.com/adilsontchameia/employee_validator/assets/64656900/2c139568-857f-42ca-a1df-2fb7267e3636">
 ![p1](https://github.com/adilsontchameia/employee_validator/assets/64656900/2c139568-857f-42ca-a1df-2fb7267e3636)
 
 ![p2](https://github.com/adilsontchameia/employee_validator/assets/64656900/e9cc5b3e-9e1c-464d-8c58-5e1c6db36d91)
 ![p3](https://github.com/adilsontchameia/employee_validator/assets/64656900/c4229c04-dcfb-4553-8f12-ae091c06fae9)
+
+Execel smart-sheet where the information is coming.
 <img width="1302" alt="p4" src="https://github.com/adilsontchameia/employee_validator/assets/64656900/df5e50a3-ecda-41fc-ad47-24e92855520e">
