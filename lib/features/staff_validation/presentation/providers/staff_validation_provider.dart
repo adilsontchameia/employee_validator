@@ -1,62 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:inss_validator/features/staff_validation/infrasctructure/infrasctructure.dart';
 
 import '../../domain/domain.dart';
-import '../../google_sheets_api.dart';
 
-class ValidateInssProvider extends ChangeNotifier {
+class StaffProvider extends ChangeNotifier {
+  final StaffRepository repository;
+  StaffProvider({required this.repository});
+
+  Staff _staff = Staff();
+  Staff get staff => _staff;
+
   bool _isLoading = false;
-  Staff? staffDetails;
-  int? id;
-  String? name;
-  String? position;
-  String? code;
-  String? cashPaidStaff;
-  String? startDate;
-  String? birthDate;
-  String? idNumbers;
-  String? inssNum;
-  String? category;
-  String? gender;
-  String? bloodType;
-  String? location;
-  String? municipality;
-  String? dutyOcation;
-  String? teamSection;
-  String? opsWadSupport;
-  String? donor;
-  int? baseSalary = 0;
-
-  Future validateInss(int inss) async {
-    try {
-      isLoading = true;
-      final staff = await GoogleSheetApi.getById(inss);
-      name = staff!.name;
-      position = staff.position;
-      code = staff.code;
-      cashPaidStaff = staff.cashPaidStaff;
-      startDate = staff.startDate;
-      birthDate = staff.birthDate;
-      idNumbers = staff.idNumbers;
-      inssNum = staff.inssNum;
-      category = staff.category;
-      gender = staff.gender;
-      bloodType = staff.bloodType;
-      location = staff.location;
-      municipality = staff.municipality;
-      dutyOcation = staff.dutyOcation;
-      teamSection = staff.teamSection;
-      opsWadSupport = staff.opsWadSupport;
-      donor = staff.donor;
-      baseSalary = staff.baseSalary;
-    } finally {
-      isLoading = false;
-    }
-  }
-
   bool get isLoading => _isLoading;
-
   set isLoading(bool value) {
     _isLoading = value;
     notifyListeners();
+  }
+
+  String _erroMessage = '';
+  String get message => _erroMessage;
+
+  Future<void> validate(int id) async {
+    isLoading = true;
+
+    try {
+      notifyListeners();
+      final retrievedStaff = await repository.getById(id);
+
+      _staff = retrievedStaff!;
+      _erroMessage = '';
+      isLoading = false;
+    } on NotFound {
+      isLoading = false;
+      _erroMessage = 'Not found';
+    }
   }
 }

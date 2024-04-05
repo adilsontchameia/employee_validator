@@ -1,2 +1,2 @@
 export 'consts/environment.dart';
-export 'helpers/screen_proportion.dart';
+export 'helpers/screen_size.dart';
